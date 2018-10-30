@@ -1,20 +1,38 @@
 const net = require('net')
-const stick = require('stickpackage')
-stick(1024);
+const Stick = require('stickpackage').stick;
+//const stick = new Stick(1024).setReadIntBE('16')
+const HEAD_LEN = 2
+
 var sockets = {};
 
+function data_process(data) {
+    const head = new Buffer(HEAD_LEN)
+    /*
+      copy(targetBuffer[, targetStart[, sourceStart[, sourceEnd]]])
+      targetBuffer - 要拷贝的 Buffer 对象。
+      targetStart - 数字, 可选, 默认: 0
+      sourceStart - 数字, 可选, 默认: 0
+      sourceEnd - 数字, 可选, 默认: buffer.length
+    */
+    data.copy(head, 0)
+    const l = head.readInt16BE();
+    console.log('data.length:' + l);
+    const body = new Buffer(l)
+    console.log('D:', data)
+    data.copy(body, 0, HEAD_LEN, HEAD_LEN + l)
+    console.log('DD:', body)
+}
+
 const tcp_server = net.createServer(function (socket) {
-     //连接成功进入
+    //连接成功进入
     //socket.write("hello,i'm server!");
-    console.log('客户端：已经与服务端建立连接');
-    const msgCenter = new stick.msgCenter();
-    msgCenter.onMsgRecv(function (data) {
-        console.log('recv data: ' + data.toString())
-    })
+    console.log('客户端：connnet');
+    socket.stick = new Stick(1024).setReadIntBE('16')
+    socket.stick.onData(data_process)
 
     socket.on('data', function (data) {
-        console.log("data", data);
-        msgCenter.putData(data)
+        console.log("Dat", data)
+        socket.stick.putData(data)
     })
 
     socket.on('close', function (error) {
