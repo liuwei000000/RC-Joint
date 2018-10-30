@@ -13,7 +13,7 @@ function AddLabel(groupbox,name,text,width){
 function OnInit(){
 
  var socket1={ID:"TcpServer01",SOCKETTYPE:"TCP Server",PORT:60000,HEX:1,UI:[]};
- sockets.push(socket1);
+ //sockets.push(socket1);
 
  var group1=[];
  AddLabel(group1,'Label1','请输入数字1',80); AddEdit(group1,'Edit1','');    AddButton(group1,'Button1','Button1');
@@ -24,13 +24,14 @@ function OnInit(){
  AddLabel(group2,'Label1','请输入数字4',80);AddEdit(group2,'Edit4','');   AddButton(group2,'Button4','Button4');
 
  var socket2={ID:"TcpServer02",SOCKETTYPE:"TCP Server",PORT:61000,HEX:0,UI:[]};
- socket2.UI.push(group1);
- socket2.UI.push(group2);
+ // 增加两个server暂时去掉
+ //socket2.UI.push(group1);
+ //socket2.UI.push(group2);
 
- sockets.push(socket2);
+ //sockets.push(socket2);
 
  for(i=1;i<=5;i++){
-  var socket3={ID:"TcpClient0"+i,SOCKETTYPE:"TCP Client",HOST:"127.0.0.1",PORT:60000,HEX:0,UI:[]};
+  var socket3={ID:"TcpClient0"+i,SOCKETTYPE:"TCP Client",HOST:"127.0.0.1",PORT:8080,HEX:0,UI:[]};
   var group3=[];
   AddEdit(group3,'Edit1',''); AddButton(group3,'Button1','Button1');
   AddEdit(group3,'Edit2',''); AddButton(group3,'Button2','Button2');

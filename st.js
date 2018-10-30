@@ -1,5 +1,6 @@
 const net = require('net')
 const stick = require('stickpackage')
+stick(1024);
 var sockets = {};
 
 const tcp_server = net.createServer(function (socket) {
