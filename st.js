@@ -32,7 +32,7 @@ const tcp_server = net.createServer(function (socket) {
 
     socket.on('data', function (data) {
         console.log("Dat", data)
-        socket.stick.putData(data)
+        //socket.stick.putData(data)
     })
 
     socket.on('close', function (error) {
