@@ -27,12 +27,9 @@ const tcp_server = net.createServer(function (socket) {
     //连接成功进入
     //socket.write("hello,i'm server!");
     console.log('客户端：connnet');
-    socket.stick = new Stick(1024).setReadIntBE('16')
-    socket.stick.onData(data_process)
 
     socket.on('data', function (data) {
         console.log("Dat", data)
-        //socket.stick.putData(data)
     })
 
     socket.on('close', function (error) {
