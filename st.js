@@ -45,12 +45,13 @@ function sendMsg(conn, data) {
     if (!conn.writable)  freeConn(conn); //防止超时，没有收到end包
     conn.write(data);
 }
+var u = 0;
 
 const tcp_server = net.createServer({ allowHalfOpen: false }, function (socket) {
     //连接成功进入
     //socket.write("hello,i'm server!");
     console.log('client connnet', Object.keys(clientList).length);
-    addCoon(socket, "");
+    addCoon(socket, u++);
 
     socket.on('data', function (data) {
         console.log("Dat", data, data.length);
