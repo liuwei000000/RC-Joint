@@ -75,12 +75,10 @@ const tcp_server = net.createServer({ allowHalfOpen: false }, function (socket) 
     
 })
 
-
-
 tcp_server.on('error', function (err) {
     throw err
 })
-tcp_server.listen(8080, function () {
-    console.log('tcp_server listening on 8080')
+tcp_server.listen(8081, function () {
+    console.log('tcp_server listening on 8081')
 })
 console.log('ok');

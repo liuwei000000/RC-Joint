@@ -16,22 +16,22 @@ function OnInit() {
   //  sockets.push(socket1);
 
   //  var group1=[];
-  //  AddLabel(group1,'Label1','ÇëÊäÈëÊı×Ö1',80); AddEdit(group1,'Edit1','');    AddButton(group1,'Button1','Button1');
-  //  AddLabel(group1,'Label1','ÇëÊäÈëÊı×Ö2',80); AddEdit(group1,'Edit2','');   AddButton(group1,'Button2','Button2');
+  //  AddLabel(group1,'Label1','è¯·è¾“å…¥æ•°å­—1',80); AddEdit(group1,'Edit1','');    AddButton(group1,'Button1','Button1');
+  //  AddLabel(group1,'Label1','è¯·è¾“å…¥æ•°å­—2',80); AddEdit(group1,'Edit2','');   AddButton(group1,'Button2','Button2');
 
   //  var group2=[];
-  //  AddLabel(group2,'Label1','ÇëÊäÈëÊı×Ö3',80);AddEdit(group2,'Edit3','');    AddButton(group2,'Button3','Button3');
-  //  AddLabel(group2,'Label1','ÇëÊäÈëÊı×Ö4',80);AddEdit(group2,'Edit4','');   AddButton(group2,'Button4','Button4');
+  //  AddLabel(group2,'Label1','è¯·è¾“å…¥æ•°å­—3',80);AddEdit(group2,'Edit3','');    AddButton(group2,'Button3','Button3');
+  //  AddLabel(group2,'Label1','è¯·è¾“å…¥æ•°å­—4',80);AddEdit(group2,'Edit4','');   AddButton(group2,'Button4','Button4');
 
   //  var socket2={ID:"TcpServer02",SOCKETTYPE:"TCP Server",PORT:61000,HEX:0,UI:[]};
-  // Ôö¼ÓÁ½¸öserverÔİÊ±È¥µô
+  // å¢åŠ ä¸¤ä¸ªserveræš‚æ—¶å»æ‰
   //socket2.UI.push(group1);
   //socket2.UI.push(group2);
 
   //sockets.push(socket2);
 
   for (i = 1; i <= 5; i++) {
-    var socket3 = { ID: "TcpClient0" + i, SOCKETTYPE: "TCP Client", HOST: "127.0.0.1", PORT: 8080, HEX: 0, UI: [] };
+    var socket3 = { ID: "TcpClient0" + i, SOCKETTYPE: "TCP Client", HOST: "127.0.0.1", PORT: 8081, HEX: 0, UI: [] };
     // var group3 = [];
     // AddEdit(group3, 'Edit1', ''); AddButton(group3, 'Button1', 'Button1');
     // AddEdit(group3, 'Edit2', ''); AddButton(group3, 'Button2', 'Button2');
@@ -41,7 +41,7 @@ function OnInit() {
   }
 
   for (i = 1; i <= 5; i++) {
-    var socket3 = { ID: "TcpClient0" + i, SOCKETTYPE: "TCP Client", HOST: "47.93.212.144", PORT: 8080, HEX: 0, UI: [] };
+    var socket3 = { ID: "TcpClient0" + i, SOCKETTYPE: "TCP Client", HOST: "47.93.212.144", PORT: 8081, HEX: 0, UI: [] };
     // var group3 = [];
     // AddEdit(group3, 'Edit1', ''); AddButton(group3, 'Button1', 'Button1');
     // AddEdit(group3, 'Edit2', ''); AddButton(group3, 'Button2', 'Button2');
@@ -89,7 +89,7 @@ function OnSocketEvent(socketid, eventname, param1, param2) {
 
   if (eventname == 'OnConnect') {
     if (socketid.substring(0, 9) == 'TcpClient') {
-      Display(socketid, timestr + socketid + '½¨Á¢Á¬½Ó');
+      Display(socketid, timestr + socketid + 'å»ºç«‹è¿æ¥');
     }
     if (socketid.substring(0, 11) == 'TcpServer01') {
       var group = [];
@@ -101,7 +101,7 @@ function OnSocketEvent(socketid, eventname, param1, param2) {
       var socket1 = { ID: socketid, SOCKETTYPE: "TCP Server-Client", PORT: 60000, HEX: 0, UI: [] };
       socket1.UI.push(group);
       sockets.push(socket1);
-      Display(socketid, timestr + socketid + '½¨Á¢Á¬½Ó');
+      Display(socketid, timestr + socketid + 'å»ºç«‹è¿æ¥');
     }
   }
   else if (eventname == 'OnRead') {
@@ -114,14 +114,14 @@ function OnSocketEvent(socketid, eventname, param1, param2) {
   }
   else if (eventname == 'OnDisConnect') {
     if (socketid.substring(0, 9) == 'TcpClient') {
-      Display(socketid, timestr + socketid + '¶Ï¿ªÁ¬½Ó');
+      Display(socketid, timestr + socketid + 'æ–­å¼€è¿æ¥');
     }
     if (socketid.substring(0, 11) == 'TcpServer01') {
       var now = new Date();
       var hour = now.getHours();
       var minute = now.getMinutes();
       var second = now.getSeconds();
-      Display(socketid, timestr + socketid + '¶Ï¿ªÁ¬½Ó');
+      Display(socketid, timestr + socketid + 'æ–­å¼€è¿æ¥');
     }
   }
   else {
